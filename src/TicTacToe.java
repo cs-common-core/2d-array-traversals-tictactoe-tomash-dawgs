@@ -1,16 +1,45 @@
+import java.util.Scanner;
+
 public class TicTacToe {
     private int[][] board; // 3x3 board, 0 for empty, 1 for X, 2 for O
     private int currentPlayer; // 1 for X, 2 for O
-
+    
     public TicTacToe() {
         board = new int[3][3];
         currentPlayer = 1;
+        
     }
 
-    public void play(int row, int col) {
+    public void turn(){
+        
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Enter a row");
+            int row = scanner.nextInt();
+            System.out.println("Enter a column");
+            int column = scanner.nextInt();
+            while( play(row, column)==false){
+                System.out.println("Enter a row");
+                row = scanner.nextInt();
+                System.out.println("Enter a column");
+                column = scanner.nextInt();
+                play(row, column);
+            }
+            System.out.println("Heres the current board:");
+            printBoard();
+        
+            System.out.println("Player " + getCurrentPlayer() + "s turn now");
+        
+        
+    }
+
+    public boolean play(int row, int col) {
+        if((row>2||row<0)||(col>2||col<0)){
+            System.out.println("Please choose a number in between 0 and two");
+            return false;
+        }
         if(board[row][col] != 0) {
             System.out.println("Cell already occupied");
-            return;
+            return false;
         } else {
             board[row][col] = currentPlayer;
             if(currentPlayer == 1) {
@@ -18,6 +47,7 @@ public class TicTacToe {
             } else {
                 currentPlayer = 1;
             }
+            return true;
         }
     }
 
