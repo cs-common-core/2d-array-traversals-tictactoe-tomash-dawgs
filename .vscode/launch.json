@@ -3,6 +3,13 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Play",
+            "request": "launch",
+            "mainClass": "Play",
+            "projectName": "2d-array-traversals-tictactoe-tomash-dawgs_1e43a4b3"
+        },
+        {
+            "type": "java",
             "name": "Game",
             "request": "launch",
             "mainClass": "Game",
